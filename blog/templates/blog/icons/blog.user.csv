@@ -1,0 +1,2 @@
+id,password,last_login,is_superuser,username,first_name,last_name,is_staff,is_active,date_joined,phone_number,email,city,address,image
+2,pbkdf2_sha256$260000$2FVcn0tDD14E5FmPSLu36U$xPFCT5On4ahEfkULkOo5HuERN2SCbTjl6Q1BZw9vjgk=,2023-07-20 10:28:31.581470+00:00,False,ram,ram,sahu,False,True,2023-07-20 07:00:56+00:00,0000000000,timimir321@paldept.com,jaipur,jaipur,images/signup_Hy9wfGb.png

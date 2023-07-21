@@ -39,6 +39,8 @@ class Tags(models.Model):
     def __str__(self):
         return self.name
     
+  
+
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -50,8 +52,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)
     slug = AutoSlugField(populate_from='title', unique=True)
-    
-
+ 
 
     def publish(self):
         self.published_date = timezone.now()
