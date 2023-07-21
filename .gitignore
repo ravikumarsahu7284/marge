@@ -1,0 +1,5 @@
+db.sqlite3
+media/
+*migrations
+user_image/
+envsmrg/

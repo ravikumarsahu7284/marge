@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<html>
+  <body>
+    <div class="row col-12">
+      {% for post in posts %}
+      <div class="col-4">
+        <div class="card" style="border-color: black;" >
+          <div class="card-body">
+            <img src="{{post.image.url}}" alt="Opps image not uploaded" width="380" height="300">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h5>
+              <a href="{% url 'author_filter' post.author %}"><p style="margin-left: 10px;">By:- {{ post.author }} </p></a>
+              <p class="card-text">{{ post.text|linebreaksbr |truncatewords:15}}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted"><a href="{% url 'published_date' post.published_date %}"><p style="margin-left: 10px;">{{ post.published_date }} </p></a></small>
+            </div>
+            <h2><a class="btn btn-primary" href="{% url 'post_detail' slug=post.slug %}" class="btn btn-primary">Read More.</a></h2>
+          </div> 
+        </div> <br>
+      </div>
+      {% endfor %}
+    </div>  
+  </body>
+</html>
+
+
+
+
+{% endblock %}
