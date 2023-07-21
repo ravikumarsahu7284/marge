@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post, Category, Tags, Comment
+from .models import Post, Category, Tags, Comment, User
 from .forms import UserForm, LoginForm, PostForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -64,13 +64,37 @@ def logout_user(request):
 # Create your views here.
 def post_list(request):
     posts = Post.objects.all()
-    def get(request):
-        category = Category.objects.all()
-        products = Post.objects.filter(category__slug = id)
-
-        context = {'category': category,'posts':posts,}
-
+    
     return render(request, 'blog/post_list.html', {'posts': posts}) 
+
+def post_category(request, slug):
+    categories = Category.objects.filter(slug=slug).last()
+    posts = Post.objects.filter(category=categories).all()
+    # context = {'category': category, 'posts': posts}
+    return render(request, 'blog/post_category.html', {'posts': posts}) 
+
+def post_tags(request, slug):
+    tag = Tags.objects.filter(slug=slug).last()
+    posts = Post.objects.filter(tags=tag).all()
+    # print(posts, 'ssssssssssssssssss')
+    # context = {'category': category, 'posts': posts}
+    return render(request, 'blog/post_tags.html', {'posts': posts}) 
+
+def post_author(request, slug):
+    authors = User.objects.filter(username=slug).last()
+    # print(authors, 'ssssssssssssss')
+    # author = request.post.author
+    posts = Post.objects.filter(author=authors).all()
+    # print(posts, 'rrrrrrrrrrrrr')
+    return render(request, 'blog/authorfilter.html', {'posts': posts}) 
+
+def post_date(request, slug):
+    published = Post.objects.filter(published_date=slug).last()
+    # print(authors, 'ssssssssssssss')
+    # author = request.post.author
+    posts = Post.objects.filter(published_date=published).all()
+    # print(posts, 'rrrrrrrrrrrrr')
+    return render(request, 'blog/postdatefilter.html', {'posts': posts}) 
 
 #Post page and comment
 def post_detail(request, slug):

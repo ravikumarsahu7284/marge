@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>{{ user.username }}'s Profile</h1>
+    <!-- <h1>{{ user.username }}'s Profile</h1>
     <p>username: {{ profile.username }}</p>
     <p>email: {{ profile.email }}</p>
     <p>Address: {{ profile.address }}</p>
@@ -11,5 +11,39 @@
     <img style="height: 150px;" src="{{profile.image.url}}"><br><br>
 
     <a href="{% url 'edit_profile' %}">Edit Profile</a>
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>{{ user.username }}'s Profile</h2>
+        <br>
+        <img src="{{profile.image.url}}" alt="Profile Picture" width="240px">
+        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>username: {{ profile.username }}</p>
+        <p>email: {{ profile.email }}</p>
+        <p>Address: {{ profile.address }}</p>
+        <p>Country: {{ profile.Country }}</p> 
+        <p>City: {{ profile.city }}</p>
+        <!-- <p>Birthday: {{ profile.birthday }}</p>  -->
+        <!-- <p>Phone Number: {{ user.userprofile.phone }}</p> -->
+        <a href="{% url 'edit_profile' %}">Edit Profile</a><br>
+        
+        <!-- If profile is updated successfully -->
+        {% if messages %}
+        {% for message in messages %}
+        <br><br>{{ message }}
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
+
 {% endblock %}
- 

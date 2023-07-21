@@ -15,5 +15,9 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('logout/', views.logout_user, name='logout'),
+    path('post_category/<str:slug>/', views.post_category, name='post_category'),
+    path('post_tags/<str:slug>/', views.post_tags, name='post_tags'),
+    path('authorfilter/<str:slug>/', views.post_author, name='author_filter'),
+    path('postdatefilter/<str:slug>/', views.post_date, name='published_date'),
 ]
 

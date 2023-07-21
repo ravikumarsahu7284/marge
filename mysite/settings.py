@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'polls',
+    'import_export',
 ]
 
 MIDDLEWARE = [

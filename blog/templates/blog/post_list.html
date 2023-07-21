@@ -2,16 +2,17 @@
 
 {% block content %}
 
+
 <div class="row col-12">
   {% for post in posts %}
-  <div class="col-6">
-    <div class="card" style="border-color: black;">
+  <div class="col-4">
+    <div class="card" style="border-color: black;" >
       <div class="card-body">
-        <img src="{{post.image.url}}" alt="Opps image not uploaded" width="580" height="300">
+        <img src="{{post.image.url}}" alt="Opps image not uploaded" width="380" height="300">
         <div class="card-body">
           <h5 class="card-title"><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h5>
-          <p><b>Category: </b> {{post.category.id}}  {{ post.category.name }} </p>
-          <p class="card-text">{{ post.text|linebreaksbr |truncatewords:25}}</p>
+          
+          <p class="card-text">{{ post.text|linebreaksbr |truncatewords:15}}</p>
         </div>
         <div class="card-footer">
           <small class="text-muted">{{ post.published_date }}</small>
@@ -21,6 +22,6 @@
     </div> <br>
   </div>
   {% endfor %}
-</div> 
+</div>  
 
 {% endblock %}
