@@ -19,5 +19,6 @@ urlpatterns = [
     path('post_tags/<str:slug>/', views.post_tags, name='post_tags'),
     path('authorfilter/<str:slug>/', views.post_author, name='author_filter'),
     path('postdatefilter/<str:slug>/', views.post_date, name='published_date'),
+    path('task/', views.upload_excel, name='task'),
 ]
 

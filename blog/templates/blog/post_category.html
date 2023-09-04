@@ -9,7 +9,7 @@
       <div class="col-4">
         <div class="card" style="border-color: black;" >
           <div class="card-body">
-            <img src="{{post.image.url}}" alt="Opps image not uploaded" width="380" height="300">
+            <img src="{{post.post_image.url}}" alt="Opps image not uploaded" width="380" height="300">
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h5>
               <a href="{% url 'post_category' post.category %}"> <p><b>Category: </b>  {{ post.category }} </p> </a>

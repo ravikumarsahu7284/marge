@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel</title>
+</head>
+<body>
+    <h1>Upload Excel File</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="excel_file">Excel File:</label>
+        <input type="file" name="excel_file" accept=".xlsx, .xls">
+        <button type="submit">Upload and Save</button>
+    </form>
+
+    
+    <h1 style="text-align: center; ">Hotel Data</h1>
+    <table style="border: groove; margin: auto; ">
+        <tr>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Continent</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Country</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">City</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Hotel Name</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Stars</th> 
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Date</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">End Date</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Price</th>
+            <th style="margin-left: 95px; text-align: center; border: ridge;">Discounted Price</th>
+        </tr>
+        {% for hoteldata in hoteldata_list %}
+        <tr>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.continent }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.country }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.city }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.hotelname }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.stars }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.date }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.end_date }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.price }}</td>
+            <td style="margin-left: 95px; text-align: center; border: ridge;">{{ hoteldata.discounted_Price }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+{% endblock %}

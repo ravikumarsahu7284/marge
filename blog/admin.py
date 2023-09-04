@@ -3,8 +3,16 @@ import csv
 from django.http import HttpResponse
 
 from .models import Post, User, Category, Tags, Comment
-from import_export.admin import ImportExportModelAdmin
-# from .import export_as_csv_action
+# from .models import Hoteldata
+
+from django.contrib import admin
+from .models import Hoteldata
+
+class HoteldataAdmin(admin.ModelAdmin):
+    list_display = ('continent', 'country', 'city', 'hotelname', 'stars', 'date', 'end_date', 'price', 'discounted_Price')
+    list_filter = ['hotelname']
+
+admin.site.register(Hoteldata, HoteldataAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -45,12 +53,12 @@ class webpost(admin.ModelAdmin, ExportCsvMixin):
 admin.site.register(Category,CategoryAdmin)
 
 @admin.register(Tags)
-class webtags(ImportExportModelAdmin):
+class webtags(admin.ModelAdmin):
     search_fields = ['name']
     list_filter = ['name']
 
 @admin.register(Comment)
-class webcomment(ImportExportModelAdmin):
+class webcomment(admin.ModelAdmin):
     search_fields = ['email']
     list_filter = ['name']
 

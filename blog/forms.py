@@ -1,7 +1,5 @@
 from django import forms
 from .models import Post, User, Category, Tags, Comment
-
-
 class UserForm(forms.ModelForm):
     # first_name=forms.CharField(max_length=20)
     # last_name=forms.CharField(max_length=20)
@@ -11,20 +9,19 @@ class UserForm(forms.ModelForm):
     # Birthday = forms.DateField( )
     city = forms.CharField(max_length=20)
     
+    
     class Meta:
         model = User
-        fields = ('first_name', 'last_name','username', 'email', 'password', 'address', 'country', 'city', 'image')
+        fields = ('first_name', 'last_name','username', 'email', 'password',  'address', 'country', 'city', 'image', 'country')
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=63)
     password = forms.CharField(max_length=63, widget=forms.PasswordInput)
 
-
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('author', 'title', 'text', 'category', 'tags', 'image', 'featured_image')
-
+        fields = ('author', 'title', 'text', 'category', 'tags', 'post_image', 'featured_image')
 
 class CommentForm(forms.ModelForm):
     # comment = forms.CharField(widget=forms.Textarea(attrs={
@@ -46,3 +43,11 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name','username', 'email', 'password', 'address', 'city', 'image')
+
+
+# class UploadForm(forms.ModelForm):
+#     excel_file = forms.FileField(upload_to='excel_uploads/')
+
+#     class Meta: 
+#         model = Hoteldata
+#         fields = 'excel_file'

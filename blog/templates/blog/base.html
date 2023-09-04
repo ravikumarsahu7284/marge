@@ -20,7 +20,15 @@
                 <h4><a href="{% url 'profile' %}"class="top-menu">{% include './icons/person-circle.svg' %} 
                     <!-- Hi {{ user.username }}! -->
                 </a></h4>
-                <p><a href="{% url 'logout' %}"class="top-menu">Log Out</a></p>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'task' %}" class="top-menu">
+                       <h6>File upload</h6>          
+                    </a>
+                {% endif %}
+
+                <a href="{% url 'logout' %}"class="top-menu">
+                    <h6>Log Out</h6>
+                </a>
             {% else %}
                 <a href="{% url 'register' %}" class="top-menu" style="font-size: 20px">Register</a>
                 <a href="{% url 'login' %}" class="top-menu" style= "font-size: 20px;">Login</a>
