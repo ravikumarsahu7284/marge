@@ -81,7 +81,7 @@
             </i> {{ comment.created_date|timesince}} ago
             | {% if comment.children.count >= 0 %} {{ comment.children.count }} comment(s) {% endif %}
             <hr>
-            <b>Text:-</b> {{ comment.comment }}
+            <b>Massage:-</b> {{ comment.massage }}
         </small>
         <hr>
 
@@ -93,7 +93,7 @@
                 <b>Email:- </b>{{ reply.email }} | <i class="fa fa-clock">
                 </i> {{ comment.created_date|timesince}} ago
                 | {% if comment.children.count >= 0 %} {{ comment.children.count }} comment(s) {% endif %}
-                <br> <b>Text Reply:-</b> {{ reply.comment }}
+                <br> <b>Reply Massage:-</b> {{ reply.massage }}
             </small>
             <hr>
             {% endfor %}

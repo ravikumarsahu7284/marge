@@ -232,7 +232,7 @@ class PostUpdateAPiView(APIView):
 		else:
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+                              
 # How to delete a post 
 class DeletepostAPiView(APIView):
 	permission_classes = [IsAuthenticated]

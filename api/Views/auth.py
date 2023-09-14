@@ -63,21 +63,29 @@ class RegisterView(APIView):
         #     data._mutable =True
         # except:
         #     pass
-        
+        print(data, 'uuuuuuuuuuuuuu')
         serializer = UserSerializer(data=data, context={"request":request} )
-
+        print(serializer, '9999999999999999')
         # serializer = UserSerializer(data=request.data)
         # try:
         #     data._mutable =True
         # except:
         #     pass
-        if serializer.is_valid():
-            serializer.save(password=encrypt_password)
         
+        
+        if serializer.is_valid():
+            user = User.objects.create(email=email, password=password, first_name=first, last_name=last, city=city)
+            print(user, 'tttttttttttttttttttttttttttttttttttttt')
+            serializer.save(password=encrypt_password)
+            # user = User.objects.create_user(email=email, password=password, first_name=first, last_name=last, city=city)
+            # print(user, 'tttttttttttttttttttttttttttttttttttttt')
+         
+
         if serializer:
             res['status'] = True
             res['message'] = "Register successfull"
             res['data'] = serializer.data
+            print(res['data'], '12222222222222222222222')
             return Response(res, status=status.HTTP_200_OK)
         else:
             res['status'] = False

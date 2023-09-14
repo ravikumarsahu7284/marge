@@ -8,7 +8,9 @@
   <div class="col-4">
     <div class="card" style="border-color: black;">
       <div class="card-body">
+        {% if post.post_image %}
         <img src="{{ post.post_image.url }}" alt=" Opps image not uploaded" style=" height: 184px; width: 372px;">
+        {% endif %} 
         <!-- {% if post.featured_image %}
         <p>Featured Image</p>
         {% endif %} -->

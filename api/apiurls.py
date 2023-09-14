@@ -3,6 +3,9 @@ from django.urls import path
 from .Views.auth import LoginView, RegisterView, ProfileAPiView, ProfileUpdateAPiView, DeleteProfileAPiView, ProfileListAPiView
 from .Views.blog import PostListAPiView, PostdetailAPiView, PostCreateAPiView, PostUpdateAPiView, DeletepostAPiView
 from .Views.comment import CommentListAPIView
+# from .View.authwithmodel import 
+
+
 urlpatterns = [
     path('signup/', RegisterView.as_view(), name='signup'),
     path('loginpage/', LoginView.as_view(), name='loginpage'),

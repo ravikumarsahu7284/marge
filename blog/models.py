@@ -6,8 +6,8 @@ from django.contrib import admin
 
 
 class User(AbstractUser):
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
     phone_number = models.CharField(max_length = 10)
     email = models.EmailField(unique = True)
     city = models.CharField(max_length = 100)
@@ -65,15 +65,15 @@ class Post(models.Model):
 
 class Comment(models.Model): 
     # sno = models.AutoField(primary_key= True)
-    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)  # Allow null if needed
     name = models.CharField(max_length=80) 
     created_date = models.DateTimeField(default=timezone.now)
     email = models.EmailField() 
-    comment = models.TextField() 
-    reply = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='replies', null=True, blank=True, default=None)
+    massage = models.TextField() 
+    reply = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', null=True, blank=True, default=None)
     
     def __str__(self):
-        return str(self.name) + ' comment ' + str(self.comment)
+        return str(self.name) + ' reply ' + str(self.massage)
 
     @property
     def children(self):

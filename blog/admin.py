@@ -15,6 +15,7 @@ class HoteldataAdmin(admin.ModelAdmin):
 admin.site.register(Hoteldata, HoteldataAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
     search_fields = ['name']
     list_filter = ['name']
 
@@ -34,7 +35,7 @@ class ExportCsvMixin:
 
 @admin.register(User)
 class webuser(admin.ModelAdmin, ExportCsvMixin):
-    list_display = ['username', 'email', 'city', 'address', 'phone_number']
+    list_display = ['id', 'username', 'email', 'city', 'address', 'phone_number']
     search_fields = ['username']
     list_filter = ['email']
     actions = ["export_as_csv"]
@@ -42,7 +43,7 @@ class webuser(admin.ModelAdmin, ExportCsvMixin):
 
 @admin.register(Post)
 class webpost(admin.ModelAdmin, ExportCsvMixin):
-    list_display = ['author', 'title', 'published_date', 'category']
+    list_display = ['id', 'author', 'title', 'published_date', 'category']
     search_fields = ['title']
     list_filter = ['published_date']
     filter_horizontal = ['tags']
@@ -54,11 +55,13 @@ admin.site.register(Category,CategoryAdmin)
 
 @admin.register(Tags)
 class webtags(admin.ModelAdmin):
+    list_display = ['id', 'name']
     search_fields = ['name']
     list_filter = ['name']
 
 @admin.register(Comment)
 class webcomment(admin.ModelAdmin):
+    list_display = ['id', 'name', 'email']
     search_fields = ['email']
     list_filter = ['name']
 
