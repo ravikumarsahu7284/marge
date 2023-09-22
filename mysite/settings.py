@@ -41,8 +41,6 @@ CUSTOM_APPS = [
     'blog',
     'polls',
     'api',
-    'apimodel',
-    'validapi'
 ]
 
 INSTALLED_APPS = PREDEFINED_APPS + THIRD_PARTY_API + CUSTOM_APPS

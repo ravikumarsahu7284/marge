@@ -23,7 +23,7 @@ class Category(models.Model):
     slug = AutoSlugField(populate_from='name', unique=True)
     # category_name = models.CharField(max_length=50,unique=True)
     # slug = models.SlugField(unique=True)
-    # description = models.TextField()
+    description = models.CharField(max_length=255)
     
     def __str__(self):  
         return self.name
@@ -49,7 +49,7 @@ class Post(models.Model):
     text = models.TextField()
     # created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    featured_image = models.ImageField(upload_to='featured_image/%Y/%m/%d/', blank=True)
+    featured_image = models.ImageField(upload_to='featured_image/%Y/%m/%d/')
     post_image = models.ImageField(upload_to='post_images/')  # Image field for the post
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)
